@@ -187,30 +187,36 @@ function initFaucetButton() {
   if (!faucet) return;
 
   const txt = faucet.querySelector('.chip__txt');
-  const COOLDOWN_KEY = 'rn_faucet_cooldown';
   let faucetCooldownInterval = null;
 
+  function cooldownKey() {
+    return (WALLET && WALLET.state.pubkey) ? 'rn_faucet_cd_' + WALLET.state.pubkey : null;
+  }
   function setCooldownUntil(ms) {
-    try { localStorage.setItem(COOLDOWN_KEY, String(ms)); } catch {}
+    const k = cooldownKey();
+    if (!k) return;
+    try { localStorage.setItem(k, String(ms)); } catch {}
   }
   function getCooldownUntil() {
-    try { return Number(localStorage.getItem(COOLDOWN_KEY) || 0); } catch { return 0; }
+    const k = cooldownKey();
+    if (!k) return 0;
+    try { return Number(localStorage.getItem(k) || 0); } catch { return 0; }
   }
   function stopFaucetTick() {
     if (faucetCooldownInterval) { clearInterval(faucetCooldownInterval); faucetCooldownInterval = null; }
+  }
+  function resetFaucetBtn() {
+    stopFaucetTick();
+    faucet.disabled = false;
+    faucet.classList.remove('is-cooldown');
+    if (txt) txt.textContent = 'FAUCET';
   }
   function startFaucetTick(untilMs) {
     stopFaucetTick();
     const pad = n => n.toString().padStart(2, '0');
     const tick = () => {
       const ms = Math.max(0, untilMs - Date.now());
-      if (ms <= 0) {
-        stopFaucetTick();
-        faucet.disabled = false;
-        faucet.classList.remove('is-cooldown');
-        if (txt) txt.textContent = 'FAUCET';
-        return;
-      }
+      if (ms <= 0) { resetFaucetBtn(); return; }
       const h = Math.floor(ms / 3_600_000);
       const m = Math.floor((ms % 3_600_000) / 60_000);
       const s = Math.floor((ms % 60_000) / 1000);
@@ -222,8 +228,18 @@ function initFaucetButton() {
     faucetCooldownInterval = setInterval(tick, 1000);
   }
 
-  const saved = getCooldownUntil();
-  if (saved && saved > Date.now()) startFaucetTick(saved);
+  function refreshFaucetState() {
+    if (!WALLET || !WALLET.state.pubkey) {
+      resetFaucetBtn();
+      return;
+    }
+    const until = getCooldownUntil();
+    if (until && until > Date.now()) {
+      startFaucetTick(until);
+    } else {
+      resetFaucetBtn();
+    }
+  }
 
   faucet.addEventListener('click', async () => {
     if (!WALLET.state.pubkey) {
@@ -249,15 +265,15 @@ function initFaucetButton() {
         showCooldownModal(e.cooldownUntil);
       } else if (e && e.code === 'unconfigured') {
         toast('Faucet backend error. Try again later.');
-        faucet.disabled = false;
-        if (txt) txt.textContent = 'FAUCET';
+        resetFaucetBtn();
       } else {
         toast(e.message || 'Faucet failed. Try again.');
-        faucet.disabled = false;
-        if (txt) txt.textContent = 'FAUCET';
+        resetFaucetBtn();
       }
     }
   });
+
+  return refreshFaucetState;
 }
 
 
@@ -310,7 +326,8 @@ function initWallet() {
 
     initWalletMenu();
 
-    initFaucetButton();
+    const refreshFaucetState = initFaucetButton();
+    if (refreshFaucetState) WALLET.subscribe(refreshFaucetState);
   };
   if (window.NexusWallet) ready();
   else window.addEventListener('nexus-wallet-ready', ready, { once: true });
