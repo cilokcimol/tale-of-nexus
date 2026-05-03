@@ -18,25 +18,34 @@ https://taleofnexus.netlify.app
 ## Project Structure
 
 ```
-site/               Static frontend (HTML, CSS, JS)
-  index.html        Application shell
-  style.css         Design system and component styles
-  app.js            Application logic
-  wallet.js         Solana wallet integration (Phantom)
-  badges/           Badge metadata and images (Bronze, Silver, Gold)
-
-netlify/
-  functions/        Serverless backend
-    faucet.mts      NEXUS token faucet with 24h cooldown
-    mint-badge.mts  On-chain NFT minting via Metaplex
-    oauth-start.mts OAuth2 authorization URL generation
-    oauth-callback.mts OAuth2 token exchange (GitHub, Discord, X)
-    x-proxy.mts     X API proxy with key rotation
-
-api/                Legacy Python API proxy (reference only)
-scripts/            Token deployment and metadata registration utilities
-package.json        Node.js dependencies
-netlify.toml        Netlify build and redirect configuration
+tale-of-nexus/
+ site/                              Static frontend (HTML, CSS, JavaScript)
+  index.html                        Application shell and page layout
+  style.css                         Design system and component styles
+  app.js                            Application logic and page routing
+  wallet.js                         Solana wallet integration (Phantom)
+  badges/
+   badge-bronze.png                 Bronze badge image asset
+   badge-silver.png                 Silver badge image asset
+   badge-gold.png                   Gold badge image asset
+   bronze.json                      Bronze NFT metadata (Metaplex standard)
+   silver.json                      Silver NFT metadata (Metaplex standard)
+   gold.json                        Gold NFT metadata (Metaplex standard)
+ netlify/
+  functions/
+   faucet.mts                       NEXUS token faucet with 24h cooldown
+   mint-badge.mts                   On-chain NFT minting via Metaplex
+   oauth-start.mts                  OAuth2 authorization URL generation
+   oauth-callback.mts               OAuth2 token exchange (GitHub, Discord, X)
+   x-proxy.mts                      X API proxy with server-side key rotation
+ api/                               Python API proxy (reference, not deployed)
+ scripts/
+  deploy-token.js                   SPL token deployment utility
+  register-token-metadata.js        On-chain token metadata registration
+ package.json                       Node.js dependencies
+ netlify.toml                       Netlify build and redirect configuration
+ .gitignore                         Excludes node_modules, secrets, and cache
+ README.md                          Project documentation
 ```
 
 ## Features
