@@ -1,0 +1,14 @@
+{
+  "name": "NEXUS",
+  "symbol": "NEXUS",
+  "description": "NEXUS is the in-app token for The Nexus, a community dashboard for the Rialo ecosystem. Earn NEXUS via the daily faucet, spend it to mint on-chain badge NFTs. Solana Devnet.",
+  "image": "https://site-rqcvepfa.devinapps.com/nexus-token-logo.png",
+  "external_url": "https://site-rqcvepfa.devinapps.com",
+  "tags": ["community", "rialo", "the-nexus", "devnet"],
+  "properties": {
+    "files": [
+      { "uri": "https://site-rqcvepfa.devinapps.com/nexus-token-logo.png", "type": "image/png" }
+    ],
+    "category": "image"
+  }
+}

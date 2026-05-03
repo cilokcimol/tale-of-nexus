@@ -1,0 +1,22 @@
+{
+  "name": "the-nexus",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The Nexus community dashboard. Static site with Netlify serverless functions on Solana Devnet.",
+  "scripts": {
+    "dev": "cd site && npm start",
+    "deploy:token": "node scripts/deploy-token.js",
+    "register:metadata": "node scripts/register-token-metadata.js"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.95.3",
+    "@solana/spl-token": "^0.4.6",
+    "bs58": "^6.0.0",
+    "@netlify/blobs": "^8.1.0",
+    "@metaplex-foundation/mpl-token-metadata": "^2.13.0"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^2.8.1"
+  }
+}

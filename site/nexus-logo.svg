@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Anime-line sigil for The Nexus.
+       Hand-drawn feel via irregular strokes, mixed widths, and a slash. -->
+  <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Outer hex frame, thick brush -->
+    <path d="M32 5 L55 18 L55 46 L32 59 L9 46 L9 18 Z" stroke-width="3.4"/>
+
+    <!-- Inner hex shadow ring (slightly offset for hand-drawn vibe) -->
+    <path d="M32 9.5 L51 20.5 L51 43.5 L32 54.5 L13 43.5 L13 20.5 Z"
+          stroke-width="1.2" opacity="0.85"/>
+
+    <!-- Stylized "N": two verticals + connecting diagonal -->
+    <path d="M21 21 L21 44" stroke-width="3.2"/>
+    <path d="M43 21 L43 44" stroke-width="3.2"/>
+    <path d="M21 21 L43 44" stroke-width="3.2"/>
+
+    <!-- Inner diamond core (rune dot) -->
+    <path d="M32 28 L36 32 L32 36 L28 32 Z" stroke-width="2" fill="currentColor"/>
+
+    <!-- Anime speed-slash crossing the sigil -->
+    <path d="M6 52 L58 12" stroke-width="2.6" stroke-dasharray="0 0"/>
+
+    <!-- Tiny tick marks at the hex points (decorative) -->
+    <path d="M32 3.5 L32 6.5" stroke-width="2"/>
+    <path d="M32 57.5 L32 60.5" stroke-width="2"/>
+    <path d="M5.5 18 L8.2 19.4" stroke-width="2"/>
+    <path d="M55.8 44.6 L58.5 46" stroke-width="2"/>
+  </g>
+</svg>

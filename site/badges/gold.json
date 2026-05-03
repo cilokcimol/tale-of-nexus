@@ -1,0 +1,18 @@
+{
+  "name": "Gold Nexus",
+  "symbol": "TNG",
+  "description": "The highest tier, reserved for the most active community members of The Nexus. Earned by the relentless builders who climbed the leaderboard, completed every mission, and never broke their streak. Minted on Solana Devnet.",
+  "image": "https://taleofnexus.netlify.app/badges/badge-gold.png",
+  "external_url": "https://taleofnexus.netlify.app",
+  "attributes": [
+    { "trait_type": "Tier", "value": "Gold" },
+    { "trait_type": "Cost", "value": "2000 NEXUS" },
+    { "trait_type": "Network", "value": "Solana Devnet" }
+  ],
+  "properties": {
+    "files": [
+      { "uri": "https://taleofnexus.netlify.app/badges/badge-gold.png", "type": "image/png" }
+    ],
+    "category": "image"
+  }
+}

@@ -1,0 +1,18 @@
+[build]
+  publish = "site"
+  functions = "netlify/functions"
+  command = "npm install"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = []
+
+[[redirects]]
+  from = "/auth/*"
+  to = "/.netlify/functions/auth/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/x/*"
+  to = "/.netlify/functions/x-proxy"
+  status = 200

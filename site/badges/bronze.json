@@ -1,0 +1,18 @@
+{
+  "name": "Bronze Nexus",
+  "symbol": "TNB",
+  "description": "Recognition for early supporters of The Nexus. Earned by those who arrived at the edge of a new chain and were among the first to stand here. Minted on Solana Devnet.",
+  "image": "https://taleofnexus.netlify.app/badges/badge-bronze.png",
+  "external_url": "https://taleofnexus.netlify.app",
+  "attributes": [
+    { "trait_type": "Tier", "value": "Bronze" },
+    { "trait_type": "Cost", "value": "100 NEXUS" },
+    { "trait_type": "Network", "value": "Solana Devnet" }
+  ],
+  "properties": {
+    "files": [
+      { "uri": "https://taleofnexus.netlify.app/badges/badge-bronze.png", "type": "image/png" }
+    ],
+    "category": "image"
+  }
+}

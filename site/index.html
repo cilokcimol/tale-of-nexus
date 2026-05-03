@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Nexus. Community dashboard for the Rialo ecosystem. Daily checkin, missions, redeem badges, leaderboard, chatroom, X tracker, and profile.">
+  <title>The Nexus</title>
+  <link rel="icon" type="image/svg+xml" href="nexus-logo.svg">
+  <link rel="shortcut icon" type="image/svg+xml" href="nexus-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hdr">
+    <div class="wrap hdr__in">
+      <a href="#" class="hdr__brand" data-page="overview">
+        <span class="hdr__logo">
+          <img src="nexus-logo.svg" alt="The Nexus">
+        </span>
+        <span class="hdr__name">The <b>Nexus</b></span>
+      </a>
+
+      <nav class="hdr__nav" id="nav">
+        <button class="on" data-page="overview">Overview</button>
+        <button data-page="social">Mission</button>
+        <button data-page="redeem">Redeem</button>
+        <button data-page="leaderboard">Leaderboard</button>
+        <button data-page="chatroom">Chatroom</button>
+        <button data-page="tracker">X Tracker</button>
+        <button data-page="profile">Profile</button>
+      </nav>
+
+      <div class="hdr__act">
+        <button class="chip chip--faucet" id="faucetBtn" type="button" title="Claim NEXUS faucet (devnet)">
+          <span class="chip__txt">FAUCET</span>
+        </button>
+        <span class="chip chip--live"><i class="dot"></i>LIVE</span>
+        <div class="wallet-anchor">
+          <button class="chip chip--auth" id="authChip" type="button">CONNECT WALLET</button>
+          <div class="wallet-menu" id="walletMenu" hidden>
+            <button class="wallet-menu__item" data-act="copy" type="button">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              Copy Address
+            </button>
+            <button class="wallet-menu__item" data-act="explorer" type="button">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M21 3l-9 9"/><path d="M5 5h6"/><path d="M5 11v8h14v-6"/></svg>
+              View on Solscan
+            </button>
+            <button class="wallet-menu__item wallet-menu__item--danger" data-act="disconnect" type="button">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h12"/><path d="M16 7l5 5-5 5"/><path d="M14 19v2H4V3h10v2"/></svg>
+              Disconnect Wallet
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="page active page--lore" id="page-overview">
+      <div class="lore" aria-label="Tale of the Nexus">
+        <video class="lore__video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+          <source src="manga.mp4" type="video/mp4">
+        </video>
+        <div class="lore__veil" aria-hidden="true"></div>
+        <div class="lore__inner">
+          <h1 class="lore__title">TALE OF THE NEXUS</h1>
+          <div class="lore__body">
+            <p><span class="hl">In the dawn of Rialo, builders gathered at the edge of a new chain.</span></p>
+            <p><span class="hl">They came searching for a place where signal outweighs noise.</span></p>
+            <p><span class="hl">From their hands rose the Nexus. One dashboard, seven halls.</span></p>
+            <p><span class="hl">In the first hall, daily check ins guard the streak. Each return is remembered.</span></p>
+            <p><span class="hl">In the second, missions wait. Likes, retweets, follows, chats. Every action turns into NEXUS.</span></p>
+            <p><span class="hl">A third hall holds the badges. Bronze for the early, silver for the steady, gold for the relentless.</span></p>
+            <p><span class="hl">The leaderboard names the loudest builders. The chatroom keeps them close.</span></p>
+            <p><span class="hl">The X tracker watches every post that mentions RialoHQ, so no signal is lost.</span></p>
+            <p><span class="hl">The last hall belongs to you alone. Your profile. Your record. Your name carried into the Rialo era.</span></p>
+            <p><span class="hl">The road is open.</span></p>
+            <p><span class="hl">Earn your place. The Nexus remembers.</span></p>
+          </div>
+          <div class="lore__stamp">
+            THE NEXUS, 2026<br>
+            BUILT BY THE JOESTAR CREW
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-social">
+      <div class="split">
+        <div class="split__left">
+          <div class="pill-row">
+            <span class="chip chip--frame">EARN NEXUS REWARDS</span>
+          </div>
+          <h1 class="hd-title">SOCIAL TASKS</h1>
+          <p class="hd-lede">
+            Complete daily checkins and social tasks to earn NEXUS and show your commitment to the Rialo community.
+          </p>
+
+          <hr class="rule">
+
+          <div class="checkin">
+            <div class="checkin__head">
+              <span class="bullet"></span>
+              <h4>DAILY CHECK IN</h4>
+            </div>
+            <p class="checkin__desc">Check in every day to build your streak and earn bonus NEXUS. Each check-in is an on-chain transaction with a 1 NEXUS fee on Solana Devnet.</p>
+            <button class="btn-frame btn-frame--lg" id="checkinBtn">CHECK IN TODAY</button>
+            <div class="streak-row" id="streakRow"></div>
+            <div class="streak-stats">
+              <div><b id="streakCount">0</b><span>STREAK</span></div>
+              <div><b id="totalCheckins">0</b><span>TOTAL</span></div>
+              <div><b id="totalPts">0</b><span>NEXUS</span></div>
+            </div>
+          </div>
+
+          <hr class="rule">
+
+          <h4 class="section-title">SOCIAL TASKS · ENGAGE WITH RIALO</h4>
+          <div class="task-list" id="socialList"></div>
+
+          <hr class="rule">
+
+          <h4 class="section-title">CHATROOM TASKS · ACTIVE COMMUNITY</h4>
+          <div class="task-list" id="chatTaskList"></div>
+
+          <p class="footnote">
+            The Nexus is the premier community dashboard for the Rialo ecosystem,
+            enabling seamless builder interactions and encrypted metrics through advanced feeds.
+          </p>
+        </div>
+
+        <div class="split__right">
+          <div class="character character--task" aria-hidden="true">
+            <img src="char-task.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="gate" data-gate="social">
+        <div class="gate__panel">
+          <h3>WALLET REQUIRED</h3>
+          <p>Connect your Solana wallet to access this section.</p>
+          <button class="btn-frame btn-frame--mint" data-gate-go>CONNECT WALLET</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-redeem">
+      <div class="split">
+        <div class="split__left">
+          <div class="pill-row">
+            <span class="chip chip--frame">SPEND NEXUS TOKENS</span>
+          </div>
+          <h1 class="hd-title">REDEEM</h1>
+          <p class="hd-lede">
+            Spend NEXUS tokens to mint collectible badges on Solana Devnet. Each badge is permanent on your profile.
+          </p>
+
+          <hr class="rule">
+
+          <div class="redeem-bal">
+            <div class="redeem-bal__lbl">YOUR NEXUS BALANCE</div>
+            <div class="redeem-bal__val"><b id="redeemBalance">0</b> NEXUS</div>
+          </div>
+
+          <div class="badges">
+            <div class="badge-card" data-badge="bronze">
+              <img src="badges/badge-bronze.png" alt="Bronze badge" class="badge-card__img">
+              <h4 class="badge-card__name">BRONZE</h4>
+              <p class="badge-card__desc">Recognition for early supporters of The Nexus.</p>
+              <div class="badge-card__cost"><b>100</b> NEXUS</div>
+              <button class="btn-frame btn-frame--mint badge-card__btn" data-redeem="bronze">REDEEM</button>
+              <div class="badge-card__status"></div>
+            </div>
+            <div class="badge-card" data-badge="silver">
+              <img src="badges/badge-silver.png" alt="Silver badge" class="badge-card__img">
+              <h4 class="badge-card__name">SILVER</h4>
+              <p class="badge-card__desc">Awarded to consistent contributors who shape the protocol.</p>
+              <div class="badge-card__cost"><b>500</b> NEXUS</div>
+              <button class="btn-frame btn-frame--mint badge-card__btn" data-redeem="silver">REDEEM</button>
+              <div class="badge-card__status"></div>
+            </div>
+            <div class="badge-card" data-badge="gold">
+              <img src="badges/badge-gold.png" alt="Gold badge" class="badge-card__img">
+              <h4 class="badge-card__name">GOLD</h4>
+              <p class="badge-card__desc">The highest tier, reserved for the most active community members.</p>
+              <div class="badge-card__cost"><b>2000</b> NEXUS</div>
+              <button class="btn-frame btn-frame--mint badge-card__btn" data-redeem="gold">REDEEM</button>
+              <div class="badge-card__status"></div>
+            </div>
+          </div>
+
+          <p class="footnote">
+            NEXUS tokens come from the faucet (devnet) and are spent on chain when minting a badge.
+            Each mint is signed by your Phantom wallet and confirmed on Solana Devnet.
+          </p>
+        </div>
+
+        <div class="split__right">
+          <div class="character character--redeem" aria-hidden="true">
+            <img src="char-redeem.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="gate" data-gate="redeem">
+        <div class="gate__panel">
+          <h3>WALLET REQUIRED</h3>
+          <p>Connect your Solana wallet to access this section.</p>
+          <button class="btn-frame btn-frame--mint" data-gate-go>CONNECT WALLET</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-leaderboard">
+      <div class="split">
+        <div class="split__left">
+          <div class="pill-row">
+            <span class="chip chip--frame">TOP COMMUNITY MEMBERS</span>
+          </div>
+          <h1 class="hd-title">LEADERBOARD</h1>
+          <p class="hd-lede">
+            Ranking by total NEXUS earned. Climb by completing tasks and engaging in chatroom.
+          </p>
+
+          <hr class="rule">
+
+          <div class="lb-table">
+            <div class="lb-row lb-row--head">
+              <span>RANK</span>
+              <span>USER</span>
+              <span class="lb-row__pts">NEXUS</span>
+              <span class="lb-row__bdg">BADGES</span>
+            </div>
+            <div id="leaderboardBody"></div>
+          </div>
+
+          <p class="footnote">
+            Leaderboard updates as you earn NEXUS across the dashboard. Your row is highlighted in mint.
+          </p>
+        </div>
+
+        <div class="split__right">
+          <div class="character character--leaderboard" aria-hidden="true">
+            <img src="char-leaderboard.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="gate" data-gate="leaderboard">
+        <div class="gate__panel">
+          <h3>WALLET REQUIRED</h3>
+          <p>Connect your Solana wallet to access this section.</p>
+          <button class="btn-frame btn-frame--mint" data-gate-go>CONNECT WALLET</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-chatroom">
+      <div class="split split--wide">
+        <div class="split__left">
+          <div class="pill-row">
+            <span class="chip chip--frame">COMMUNITY CHAT</span>
+          </div>
+          <h1 class="hd-title">CHATROOM</h1>
+          <p class="hd-lede">
+            Talk with other Nexus members. Every message you send counts toward chatroom tasks.
+          </p>
+
+          <hr class="rule">
+
+          <div class="chat">
+            <div class="chat__head">
+              <span class="bullet"></span>
+              <h4>RIALO COMMUNITY</h4>
+              <span class="chat__count">SENT BY YOU: <b id="chatSent">0</b></span>
+            </div>
+            <div class="chat__log" id="chatLog"></div>
+            <form class="chat__form" id="chatForm">
+              <input type="text" id="chatInput" placeholder="Write a message" maxlength="240" autocomplete="off">
+              <button type="submit" class="btn-frame btn-frame--mint btn-frame--sm">SEND</button>
+            </form>
+          </div>
+
+          <p class="footnote">
+            Be respectful. Spam and abusive messages will be filtered.
+          </p>
+        </div>
+
+        <div class="split__right">
+          <div class="character character--chatroom" aria-hidden="true">
+            <img src="char-chatroom.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="gate" data-gate="chatroom">
+        <div class="gate__panel">
+          <h3>WALLET REQUIRED</h3>
+          <p>Connect your Solana wallet to enter the chatroom.</p>
+          <button class="btn-frame btn-frame--mint" data-gate-go>CONNECT WALLET</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-tracker">
+      <div class="split">
+        <div class="split__left">
+          <div class="pill-row">
+            <span class="chip chip--frame">SOCIAL SIGNALS</span>
+          </div>
+          <h1 class="hd-title">X TRACKER</h1>
+          <p class="hd-lede">
+            Type any X username. We pull live followers, following, joined date, and every recent post that mentions @RialoHQ. Useful for watching how the community engages with Rialo.
+          </p>
+
+          <hr class="rule">
+
+          <form class="tracker__lookup" id="trackerForm">
+            <label class="tracker__lookup-label" for="trackerInput">X USERNAME</label>
+            <div class="tracker__lookup-row">
+              <span class="tracker__lookup-prefix">@</span>
+              <input class="tracker__lookup-input" id="trackerInput" type="text" placeholder="username" autocomplete="off" spellcheck="false">
+              <button class="btn-frame btn-frame--mint" type="submit" id="trackerSubmit">TRACK</button>
+            </div>
+            <p class="tracker__lookup-hint">Enter a public X username. We never store it. Numbers come from public signals.</p>
+          </form>
+
+          <div class="tracker__loading" id="trackerLoading" hidden>
+            <div class="tracker__spinner" aria-hidden="true"></div>
+            <div class="tracker__loading-text">
+              <div class="tracker__loading-title" id="trkLoadingTitle">PROCESSING</div>
+              <div class="tracker__loading-sub" id="trkLoadingSub">Fetching profile and Rialo posts. This can take up to a minute.</div>
+            </div>
+          </div>
+
+          <div class="tracker__error" id="trackerError" hidden>
+            <div class="tracker__error-title">COULD NOT LOAD PROFILE</div>
+            <div class="tracker__error-sub" id="trkErrorSub">The X data provider is slow or unavailable. Try again.</div>
+            <button class="btn-frame btn-frame--mint" id="trackerRetry">RETRY</button>
+          </div>
+
+          <div class="tracker" id="trackerCard" hidden>
+            <div class="tracker__head">
+              <div class="tracker__handle">
+                <div class="tracker__avatar" id="trkAvatar">
+                  <img src="nexus-logo.svg" alt="">
+                </div>
+                <div>
+                  <div class="tracker__name" id="trkHandleName">USER</div>
+                  <div class="tracker__user" id="trkHandleAt">@username</div>
+                </div>
+              </div>
+              <div class="tracker__actions">
+                <a class="btn-frame btn-frame--sm" id="trkOpen" href="#" target="_blank" rel="noopener">OPEN ON X</a>
+                <button class="btn-frame btn-frame--sm" id="trackerRefresh">REFRESH</button>
+              </div>
+            </div>
+
+            <div class="tracker__stats">
+              <div class="stat">
+                <div class="stat__lbl">FOLLOWERS</div>
+                <div class="stat__val" id="trkFollowers">0</div>
+              </div>
+              <div class="stat">
+                <div class="stat__lbl">TOTAL POSTS</div>
+                <div class="stat__val" id="trkPosts">0</div>
+              </div>
+              <div class="stat">
+                <div class="stat__lbl">FOLLOWING</div>
+                <div class="stat__val" id="trkFollowing">0</div>
+              </div>
+              <div class="stat">
+                <div class="stat__lbl">JOINED DATE</div>
+                <div class="stat__val stat__val--text" id="trkJoined">unknown</div>
+              </div>
+            </div>
+
+            <div class="tracker__feed" id="trackerFeed" style="margin-top:18px"></div>
+
+            <p class="tracker__stamp">LAST REFRESH <b id="trkStamp">never</b></p>
+          </div>
+
+          <p class="footnote" id="trackerEmpty">Enter a username above to load profile signals and posts mentioning @RialoHQ.</p>
+        </div>
+
+        <div class="split__right">
+          <div class="character character--tracker" aria-hidden="true">
+            <img src="char-overview.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="gate" data-gate="tracker">
+        <div class="gate__panel">
+          <h3>WALLET REQUIRED</h3>
+          <p>Connect your Solana wallet to access this section.</p>
+          <button class="btn-frame btn-frame--mint" data-gate-go>CONNECT WALLET</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-profile">
+      <div class="split">
+        <div class="split__left">
+          <div class="pill-row">
+            <span class="chip chip--frame">CONNECT AND TRACK</span>
+          </div>
+          <h1 class="hd-title">YOUR PROFILE</h1>
+          <p class="hd-lede">
+            Edit your profile, connect at least one account, and let the dev team track your activity.
+          </p>
+
+          <hr class="rule">
+
+          <div class="profile-section" id="editProfileSection">
+            <div class="profile-section__head">
+              <span class="bullet"></span>
+              <h4>EDIT PROFILE</h4>
+              <span class="profile-section__tag">DEV TRACKER</span>
+            </div>
+
+            <div class="inline-gate" id="editProfileGate">
+              <div class="inline-gate__panel">
+                <h5>CONNECT WALLET FIRST</h5>
+                <p>Connect your Solana wallet to unlock photo upload, username, bio, and profile saving.</p>
+              </div>
+            </div>
+
+            <div class="profile-edit">
+              <div class="profile-edit__pfp">
+                <div class="avatar" id="avatarBox">
+                  <span id="avatarPlaceholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5"><circle cx="12" cy="9" r="3"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+                  </span>
+                  <img id="avatarImg" alt="" style="display:none">
+                </div>
+                <label for="avatarInput" class="btn-frame btn-frame--sm">UPLOAD PHOTO</label>
+                <input type="file" id="avatarInput" accept="image/*" hidden>
+                <button class="link-btn" id="removeAvatarBtn" style="display:none">Remove</button>
+              </div>
+
+              <div class="profile-edit__fields">
+                <div class="field">
+                  <label>USERNAME</label>
+                  <input type="text" id="usernameInput" placeholder="Enter your username" maxlength="30">
+                </div>
+                <div class="field">
+                  <label>BIO</label>
+                  <input type="text" id="bioInput" placeholder="Short bio (optional)" maxlength="100">
+                </div>
+                <button class="btn-frame btn-frame--mint" id="saveProfileBtn">SAVE PROFILE</button>
+                <span class="save-status" id="saveStatus"></span>
+              </div>
+            </div>
+          </div>
+
+          <hr class="rule">
+
+          <div class="profile-section">
+            <div class="profile-section__head">
+              <span class="bullet"></span>
+              <h4>CONNECT AND TRACK</h4>
+              <span class="profile-section__tag">ANY ONE PROVIDER</span>
+            </div>
+            <p class="footnote" style="margin-top:0">
+              You only need to connect one provider to unlock all features. Pick whichever you prefer.
+            </p>
+
+            <div class="connect-grid">
+              <div class="connect-card" data-provider="github">
+                <div class="connect-card__icon">
+                  <svg viewBox="0 0 24 24" fill="#1a1a1a"><path d="M12 0a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 0z"/></svg>
+                </div>
+                <h5 class="connect-card__title">CONNECT GITHUB</h5>
+                <p class="connect-card__desc">Link your GitHub to verify your developer status on Rialo.</p>
+                <button class="btn-frame btn-frame--sm connect-card__btn">CONNECT</button>
+                <div class="connect-card__status"></div>
+              </div>
+
+              <div class="connect-card" data-provider="discord">
+                <div class="connect-card__icon">
+                  <svg viewBox="0 0 24 24" fill="#1a1a1a"><path d="M20.32 4.37A19.79 19.79 0 0 0 15.43 2.86a.07.07 0 0 0-.08.04c-.21.37-.45.86-.61 1.25a18.27 18.27 0 0 0-5.49 0 12.64 12.64 0 0 0-.61-1.25.08.08 0 0 0-.08-.04A19.74 19.74 0 0 0 3.68 4.37a.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .09-.03c.46-.63.87-1.3 1.22-1.99a.08.08 0 0 0-.04-.11 13.1 13.1 0 0 1-1.87-.89.08.08 0 0 1 0-.13c.13-.09.25-.19.37-.29a.07.07 0 0 1 .08-.01c3.93 1.79 8.18 1.79 12.06 0a.07.07 0 0 1 .08.01c.12.1.25.2.37.29a.08.08 0 0 1 0 .13 12.3 12.3 0 0 1-1.87.89.08.08 0 0 0-.04.11c.36.7.77 1.36 1.22 1.99a.08.08 0 0 0 .09.03 19.84 19.84 0 0 0 6-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03zM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42 2.18 1.1 2.16 2.42c0 1.33-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42 2.18 1.1 2.16 2.42c0 1.33-.95 2.42-2.16 2.42z"/></svg>
+                </div>
+                <h5 class="connect-card__title">CONNECT DISCORD</h5>
+                <p class="connect-card__desc">Link your Discord to verify your community role.</p>
+                <button class="btn-frame btn-frame--sm connect-card__btn">CONNECT</button>
+                <div class="connect-card__status"></div>
+              </div>
+
+              <div class="connect-card" data-provider="twitter">
+                <div class="connect-card__icon">
+                  <svg viewBox="0 0 24 24" fill="#1a1a1a"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25H8.08l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg>
+                </div>
+                <h5 class="connect-card__title">CONNECT X</h5>
+                <p class="connect-card__desc">Link your X account to authenticate social interactions.</p>
+                <button class="btn-frame btn-frame--sm connect-card__btn">CONNECT</button>
+                <div class="connect-card__status"></div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="rule">
+
+          <div class="profile-section">
+            <div class="profile-section__head">
+              <span class="bullet"></span>
+              <h4>MY BADGES</h4>
+            </div>
+            <div class="my-badges" id="myBadges"></div>
+          </div>
+
+          <hr class="rule">
+
+          <div class="profile-section">
+            <div class="profile-section__head">
+              <span class="bullet"></span>
+              <h4>ACTIVITY SUMMARY</h4>
+            </div>
+            <p class="footnote" id="activitySummary">
+              Connect your accounts above and complete tasks to populate your activity summary.
+            </p>
+          </div>
+        </div>
+
+        <div class="split__right">
+          <div class="character character--profile" aria-hidden="true">
+            <img src="char-profile.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="gate" data-gate="profile">
+        <div class="gate__panel">
+          <h3>WALLET REQUIRED</h3>
+          <p>Connect your Solana wallet to access this section.</p>
+          <button class="btn-frame btn-frame--mint" data-gate-go>CONNECT WALLET</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="credits-band">
+    <div class="wrap">
+      <div class="credits-band__head">
+        <span class="credits-band__eyebrow">CREDITS</span>
+        <h2 class="credits-band__title">BUILT BY THE JOESTAR CREW</h2>
+        <p class="credits-band__sub">Three builders shipping The Nexus. Tap the icons to say hi.</p>
+      </div>
+      <div class="credits-band__grid">
+        <article class="credit-card">
+          <div class="credit-card__avatar"><img src="avatar-vika.png" alt=""></div>
+          <h3 class="credit-card__name">VIKA JOESTAR</h3>
+          <p class="credit-card__role">CORE ALCHEMIST</p>
+          <div class="credit-card__socials">
+            <a class="credit-icon" href="https://x.com/cryptocymol" target="_blank" rel="noopener" aria-label="Vika Joestar on X">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231ZM17.083 19.77h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg>
+            </a>
+            <a class="credit-icon" href="https://discord.com/users/508636062340349962" target="_blank" rel="noopener" aria-label="Vika Joestar on Discord">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.369A19.79 19.79 0 0 0 15.43 2.86a.07.07 0 0 0-.075.036c-.21.374-.444.864-.608 1.249a18.27 18.27 0 0 0-5.49 0 12.66 12.66 0 0 0-.617-1.249.077.077 0 0 0-.075-.036A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.029.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.075.075 0 0 1 .078-.01c3.927 1.793 8.18 1.793 12.062 0a.075.075 0 0 1 .079.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.548-13.66a.061.061 0 0 0-.031-.03ZM8.02 15.331c-1.182 0-2.157-1.085-2.157-2.418 0-1.334.956-2.42 2.157-2.42 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418Zm7.974 0c-1.183 0-2.157-1.085-2.157-2.418 0-1.334.955-2.42 2.157-2.42 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418Z"/></svg>
+            </a>
+          </div>
+        </article>
+        <article class="credit-card">
+          <div class="credit-card__avatar"><img src="avatar-illonash.png" alt=""></div>
+          <h3 class="credit-card__name">ILLONASH JOESTAR</h3>
+          <p class="credit-card__role">CONCEPT STRATEGIST</p>
+          <div class="credit-card__socials">
+            <a class="credit-icon" href="https://x.com/illonashanum" target="_blank" rel="noopener" aria-label="Illonash Joestar on X">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231ZM17.083 19.77h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg>
+            </a>
+            <a class="credit-icon" href="https://discord.com/users/888835277265698827" target="_blank" rel="noopener" aria-label="Illonash Joestar on Discord">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.369A19.79 19.79 0 0 0 15.43 2.86a.07.07 0 0 0-.075.036c-.21.374-.444.864-.608 1.249a18.27 18.27 0 0 0-5.49 0 12.66 12.66 0 0 0-.617-1.249.077.077 0 0 0-.075-.036A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.029.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.075.075 0 0 1 .078-.01c3.927 1.793 8.18 1.793 12.062 0a.075.075 0 0 1 .079.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.548-13.66a.061.061 0 0 0-.031-.03ZM8.02 15.331c-1.182 0-2.157-1.085-2.157-2.418 0-1.334.956-2.42 2.157-2.42 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418Zm7.974 0c-1.183 0-2.157-1.085-2.157-2.418 0-1.334.955-2.42 2.157-2.42 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418Z"/></svg>
+            </a>
+          </div>
+        </article>
+        <article class="credit-card">
+          <div class="credit-card__avatar"><img src="avatar-reji.png" alt=""></div>
+          <h3 class="credit-card__name">REJI JOESTAR</h3>
+          <p class="credit-card__role">TECH EVANGELIST</p>
+          <div class="credit-card__socials">
+            <a class="credit-icon" href="https://x.com/rejii73927" target="_blank" rel="noopener" aria-label="Reji Joestar on X">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231ZM17.083 19.77h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg>
+            </a>
+            <a class="credit-icon" href="https://discord.com/users/1371483355962544272" target="_blank" rel="noopener" aria-label="Reji Joestar on Discord">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.369A19.79 19.79 0 0 0 15.43 2.86a.07.07 0 0 0-.075.036c-.21.374-.444.864-.608 1.249a18.27 18.27 0 0 0-5.49 0 12.66 12.66 0 0 0-.617-1.249.077.077 0 0 0-.075-.036A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.029.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.075.075 0 0 1 .078-.01c3.927 1.793 8.18 1.793 12.062 0a.075.075 0 0 1 .079.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.548-13.66a.061.061 0 0 0-.031-.03ZM8.02 15.331c-1.182 0-2.157-1.085-2.157-2.418 0-1.334.956-2.42 2.157-2.42 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418Zm7.974 0c-1.183 0-2.157-1.085-2.157-2.418 0-1.334.955-2.42 2.157-2.42 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418Z"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="ftr">
+    <div class="wrap ftr__in">
+      <span>THE NEXUS · COMMUNITY DASHBOARD</span>
+      <span class="ftr__links">
+        <a href="https://x.com/RialoHQ" target="_blank" rel="noopener">X</a>
+        <a href="https://discord.gg/RialoProtocol" target="_blank" rel="noopener">DISCORD</a>
+        <a href="https://t.me/rialoprotocol" target="_blank" rel="noopener">TELEGRAM</a>
+        <a href="https://www.rialo.io/" target="_blank" rel="noopener">RIALO.IO</a>
+      </span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="modal" id="cooldownModal" aria-hidden="true">
+    <div class="modal__backdrop" data-cooldown-close></div>
+    <div class="modal__panel cooldown-panel">
+      <button class="modal__close" data-cooldown-close aria-label="Close">×</button>
+      <h3>FAUCET COOLDOWN</h3>
+      <p class="modal__desc">You can claim 1000 NEXUS once every 24 hours per wallet.</p>
+      <div class="cooldown-timer" id="cooldownTimer">--:--:--</div>
+      <p class="cooldown-hint">Try again when the timer reaches zero.</p>
+      <div class="modal__actions">
+        <button class="btn-frame btn-frame--mint" data-cooldown-close>OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="connectModal" aria-hidden="true">
+    <div class="modal__backdrop"></div>
+    <div class="modal__panel">
+      <button class="modal__close" id="modalClose" aria-label="Close">×</button>
+      <h3 id="modalTitle">CONNECT ACCOUNT</h3>
+      <p class="modal__desc" id="modalDesc">Enter your username to link your account.</p>
+      <div class="field">
+        <label id="modalLabel">USERNAME</label>
+        <input type="text" id="modalInput" placeholder="@yourhandle">
+      </div>
+      <div class="modal__actions">
+        <button class="btn-frame" id="modalCancel">CANCEL</button>
+        <button class="btn-frame btn-frame--mint" id="modalConfirm">LINK</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.X_API_BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+      ? ''
+      : '';
+  </script>
+  <script type="module" src="wallet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
